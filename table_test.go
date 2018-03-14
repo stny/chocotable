@@ -1,4 +1,4 @@
-package main
+package chocotable
 
 func ExampleTable() {
 	table := &Table{}
