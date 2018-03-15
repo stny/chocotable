@@ -7,6 +7,10 @@ func ExampleTable() {
 	table.AddRow([2]string{"3", "ham egg tomate"})
 	table.AddRow([]string{"4", "アイウエオ"})
 	table.AddRow([]interface{}{5, "Lorem Ipsum"})
+	table.AddRow(struct {
+		ID   int
+		Name string
+	}{6, "Golang"})
 	table.Println()
 	// Output:
 	// ┌───┬────────────────┐
@@ -19,5 +23,7 @@ func ExampleTable() {
 	// │ 4 │ アイウエオ     │
 	// ├───┼────────────────┤
 	// │ 5 │ Lorem Ipsum    │
+	// ├───┼────────────────┤
+	// │ 6 │ Golang         │
 	// └───┴────────────────┘
 }

@@ -50,10 +50,21 @@ func extract(row interface{}) []interface{} {
 			ret[i] = v.Index(i).Interface()
 		}
 		return ret
+	case reflect.Struct:
+		return extractStruct(v)
 	default:
 		panic("Not Implemented yet")
 	}
 	return []interface{}{1, 1}
+}
+
+func extractStruct(v reflect.Value) []interface{} {
+	n := v.NumField()
+	ret := make([]interface{}, n)
+	for i := 0; i < n; i++ {
+		ret[i] = v.Field(i)
+	}
+	return ret
 }
 
 func (r *Row) calcWidthOfColumns() {
