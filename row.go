@@ -44,7 +44,7 @@ func extract(row interface{}) []interface{} {
 	v := reflect.ValueOf(row)
 	kind := v.Kind()
 	switch kind {
-	case reflect.Slice:
+	case reflect.Slice, reflect.Array:
 		ret := make([]interface{}, v.Len())
 		for i := 0; i < v.Len(); i++ {
 			ret[i] = v.Index(i).Interface()
