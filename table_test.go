@@ -6,6 +6,7 @@ func ExampleTable() {
 	table.AddRow([]string{"2", "World!"})
 	table.AddRow([2]string{"3", "ham egg tomate"})
 	table.AddRow([]string{"4", "アイウエオ"})
+	table.AddRow([]interface{}{5, "Lorem Ipsum"})
 	table.Println()
 	// Output:
 	// ┌───┬────────────────┐
@@ -16,5 +17,7 @@ func ExampleTable() {
 	// │ 3 │ ham egg tomate │
 	// ├───┼────────────────┤
 	// │ 4 │ アイウエオ     │
+	// ├───┼────────────────┤
+	// │ 5 │ Lorem Ipsum    │
 	// └───┴────────────────┘
 }
