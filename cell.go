@@ -3,6 +3,8 @@ package chocotable
 import (
 	"fmt"
 	"strings"
+
+	runewidth "github.com/mattn/go-runewidth"
 )
 
 type Cell struct {
@@ -50,7 +52,7 @@ func (c *Cell) calcHeight() {
 func (c *Cell) calcMaxWidth() {
 	var ret int
 	for _, line := range c.lines {
-		length := len(line)
+		length := runewidth.StringWidth(line)
 		if length > ret {
 			ret = length
 		}
