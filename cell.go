@@ -30,8 +30,11 @@ func NewCell(table *Table, pos int, data interface{}) *Cell {
 
 func (c *Cell) Render(index int) string {
 	var ret string
-	line := c.lines[index]
 	width := c.table.WidthOfColumns[c.pos]
+	if index > len(c.lines)-1 {
+		return " " + strings.Repeat(" ", width) + " "
+	}
+	line := c.lines[index]
 	switch c.Align {
 	case LEFT:
 		ret = Ljust(line, width, " ")

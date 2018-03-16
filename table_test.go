@@ -27,3 +27,14 @@ func ExampleTable() {
 	// │ 6 │ Golang         │
 	// └───┴────────────────┘
 }
+
+func ExampleLineBreak() {
+	table := &Table{}
+	table.AddRow([]string{"1", "Hello\nWorld"})
+	table.Println()
+	// Output:
+	// ┌───┬───────┐
+	// │ 1 │ Hello │
+	// │   │ World │
+	// └───┴───────┘
+}
