@@ -17,24 +17,27 @@ const (
 )
 
 func Rjust(s string, width int, pad string) string {
-	if runewidth.StringWidth(s) >= width {
+	w := runewidth.StringWidth(s)
+	if w >= width {
 		return s
 	}
-	return strings.Repeat(pad, width-runewidth.StringWidth(s)) + s
+	return strings.Repeat(pad, width-w) + s
 }
 
 func Ljust(s string, width int, pad string) string {
-	if runewidth.StringWidth(s) >= width {
+	w := runewidth.StringWidth(s)
+	if w >= width {
 		return s
 	}
-	return s + strings.Repeat(pad, width-runewidth.StringWidth(s))
+	return s + strings.Repeat(pad, width-w)
 }
 
 func Center(s string, width int, pad string) string {
-	if runewidth.StringWidth(s) >= width {
+	w := runewidth.StringWidth(s)
+	if w >= width {
 		return s
 	}
-	margin := width - runewidth.StringWidth(s)
+	margin := width - w
 	leftMargin := margin/2 + (margin & width & 1)
 	return strings.Repeat(pad, leftMargin) + s + strings.Repeat(pad, margin-leftMargin)
 }
