@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	runewidth "github.com/mattn/go-runewidth"
+	"github.com/stny/goodbye"
 )
 
 type AlignType int
@@ -17,7 +18,7 @@ const (
 )
 
 func Rjust(s string, width int, pad string) string {
-	w := runewidth.StringWidth(s)
+	w := runewidth.StringWidth(goodbye.ANSIColorCodes(s))
 	if w >= width {
 		return s
 	}
@@ -25,7 +26,7 @@ func Rjust(s string, width int, pad string) string {
 }
 
 func Ljust(s string, width int, pad string) string {
-	w := runewidth.StringWidth(s)
+	w := runewidth.StringWidth(goodbye.ANSIColorCodes(s))
 	if w >= width {
 		return s
 	}
@@ -33,7 +34,7 @@ func Ljust(s string, width int, pad string) string {
 }
 
 func Center(s string, width int, pad string) string {
-	w := runewidth.StringWidth(s)
+	w := runewidth.StringWidth(goodbye.ANSIColorCodes(s))
 	if w >= width {
 		return s
 	}

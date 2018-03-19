@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	runewidth "github.com/mattn/go-runewidth"
+	"github.com/stny/goodbye"
 )
 
 type Cell struct {
@@ -55,7 +56,7 @@ func (c *Cell) calcHeight() {
 func (c *Cell) calcMaxWidth() {
 	var ret int
 	for _, line := range c.lines {
-		length := runewidth.StringWidth(line)
+		length := runewidth.StringWidth(goodbye.ANSIColorCodes(line))
 		if length > ret {
 			ret = length
 		}
