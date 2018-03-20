@@ -20,7 +20,7 @@ func NewRow(table *Table, row interface{}) *Row {
 }
 
 func (r *Row) AddCells(table *Table, row interface{}) {
-	cellParts := extract(row)
+	cellParts := makeCells(row)
 	r.Cells = make([]*Cell, len(cellParts))
 	for i, c := range cellParts {
 		r.Cells[i] = NewCell(table, i, c)
@@ -40,8 +40,12 @@ func (r *Row) Render() string {
 	return s.String()
 }
 
-func extract(row interface{}) []interface{} {
+func makeCells(row interface{}) []interface{} {
 	v := reflect.ValueOf(row)
+	return extract(v)
+}
+
+func extract(v reflect.Value) []interface{} {
 	kind := v.Kind()
 	switch kind {
 	case reflect.Slice, reflect.Array:
@@ -52,10 +56,11 @@ func extract(row interface{}) []interface{} {
 		return ret
 	case reflect.Struct:
 		return extractStruct(v)
+	case reflect.Ptr:
+		return extract(v.Elem())
 	default:
 		panic("Not Implemented yet")
 	}
-	return []interface{}{1, 1}
 }
 
 func extractStruct(v reflect.Value) []interface{} {

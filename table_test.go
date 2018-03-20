@@ -11,6 +11,11 @@ func ExampleTable() {
 		ID   int
 		Name string
 	}{6, "Golang"})
+	table.AddRow(&[2]string{"7", "Gopher"})
+	table.AddRow(&struct {
+		ID   int
+		Name string
+	}{8, "zzz"})
 	table.Println()
 	// Output:
 	// ┌───┬────────────────┐
@@ -25,6 +30,10 @@ func ExampleTable() {
 	// │ 5 │ Lorem Ipsum    │
 	// ├───┼────────────────┤
 	// │ 6 │ Golang         │
+	// ├───┼────────────────┤
+	// │ 7 │ Gopher         │
+	// ├───┼────────────────┤
+	// │ 8 │ zzz            │
 	// └───┴────────────────┘
 }
 
