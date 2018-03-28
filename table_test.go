@@ -60,3 +60,16 @@ func ExampleAlignRight() {
 	// │ 2 │          :) │
 	// └───┴─────────────┘
 }
+
+func ExampleAlignCenter() {
+	table := &Table{Align: CENTER}
+	table.AddRow([]string{"1", "Hello World"})
+	table.AddRow([]string{"2", ":)"})
+	table.Println()
+	// Output:
+	// ┌───┬─────────────┐
+	// │ 1 │ Hello World │
+	// ├───┼─────────────┤
+	// │ 2 │      :)     │
+	// └───┴─────────────┘
+}
