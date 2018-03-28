@@ -12,7 +12,6 @@ type Cell struct {
 	lines  []string
 	Width  int
 	Height int
-	Align  AlignType
 	pos    int
 	table  *Table
 }
@@ -23,7 +22,6 @@ func NewCell(table *Table, pos int, data interface{}) *Cell {
 	c.table = table
 	c.pos = pos
 	c.lines = strings.Split(s, "\n")
-	c.Align = LEFT
 	c.calcMaxWidth()
 	c.calcHeight()
 	return c
@@ -36,7 +34,7 @@ func (c *Cell) Render(index int) string {
 		return " " + strings.Repeat(" ", width) + " "
 	}
 	line := c.lines[index]
-	switch c.Align {
+	switch c.table.Align {
 	case LEFT:
 		ret = Ljust(line, width, " ")
 	case RIGHT:

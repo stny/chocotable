@@ -29,6 +29,7 @@ type Table struct {
 	Rows           []*Row
 	WidthOfColumns []int
 	buf            strings.Builder
+	Align          AlignType
 }
 
 func (table *Table) AddRow(row interface{}) {

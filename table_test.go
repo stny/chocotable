@@ -47,3 +47,16 @@ func ExampleLineBreak() {
 	// │   │ World │
 	// └───┴───────┘
 }
+
+func ExampleAlignRight() {
+	table := &Table{Align: RIGHT}
+	table.AddRow([]string{"1", "Hello World"})
+	table.AddRow([]string{"2", ":)"})
+	table.Println()
+	// Output:
+	// ┌───┬─────────────┐
+	// │ 1 │ Hello World │
+	// ├───┼─────────────┤
+	// │ 2 │          :) │
+	// └───┴─────────────┘
+}
